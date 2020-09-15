@@ -1,3 +1,5 @@
+<img src="./public/discussion-forum.jpg" alt="React app diagram of functional components">
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
