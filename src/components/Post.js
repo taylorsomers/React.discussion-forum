@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 function Post(props) {
   return(
     <React.Fragment>
+     
+      
       <div onClick = {() => props.whenPostClicked(props.id)}>
         <h3>{props.postTitle} - {props.postBody}</h3>
         <p><em>{props.timeStamp}</em></p>
@@ -12,6 +14,9 @@ function Post(props) {
     </React.Fragment>
   );
 }
+
+
+
 
 Post.propTypes = {
   postTitle: PropTypes.string.isRequired,
