@@ -47,13 +47,83 @@ class PostControl extends React.Component {
     dispatch(action2);
   }
 
-  // handleClick() {
-  //   this.setState({count: this.state.count-1})
-  // }
+  handleChangingSelectedPost = (id) => {
+    const selectedPost = this.props.masterPostList[id];
+    this.setState({
+      selectedPost: selectedPost
+    });
+  }
+
+  handleEditClick = () => {
+    this.setState({
+      editing: true
+    });
+  }
+  
+  handleIncrementingPostScore = (postToIncrement) => {
+    const { dispatch } = this.props;
+    const { id, postTitle, postBody, timeStamp, postScore } = postToIncrement;
+    const action = {
+      type: 'ADD_POST',
+      id: id,
+      postTitle: postTitle,
+      postBody: postBody,
+      timeStamp: timeStamp,
+      postScore: postScore + 1
+    }
+    dispatch(action);
+    this.setState({
+      editing: false,
+      selectedPost: null
+    });
+  }
+
+  handleDecrementingPostScore = (postToDecrement) => {
+    const { dispatch } = this.props;
+    const { id, postTitle, postBody, timeStamp, postScore } = postToDecrement;
+    const action = {
+      type: 'ADD_POST',
+      id: id,
+      postTitle: postTitle,
+      postBody: postBody,
+      timeStamp: timeStamp,
+      postScore: postScore - 1
+    }
+    dispatch(action);
+    this.setState({
+      editing: false,
+      selectedPost: null
+    });
+  }
+
+  // else if (this.state.selectedKeg != null) {
+  //   currentlyVisibleState = <KegDetail keg = {this.state.selectedKeg} onClickingDecrement = {this.handleDecrementPint} //new
+  //   onClickingEdit = {this.handleEditClick}/> //new
+  //   buttonText = "Return to Keg List";
 
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
+
+    if (this.state.editing) {
+      currentlyVisibleState = <NewPostForm post = {this.state.selectedPost} onEditPost = {this.handleEditingPostInList} />
+      buttonText = "Return to Post List";
+
+    } else if (this.state.selectedPost != null) {
+      currentlyVisibleState = 
+      <PostDetail 
+        post = {this.state.selectedPost} 
+        onClickingDelete = {this.handleDeletingPost} 
+        onClickingEdit = {this.handleEditClick} />
+      buttonText = "Return to Post List";
+    } else if (this.props.formVisibleOnPage) {
+      currentlyVisibleState = <NewPostForm onNewPostCreation={this.handleAddingNewPostToList}  />;
+      buttonText = "Return to Post List";
+    } else {
+      currentlyVisibleState = <PostList postList={this.props.masterPostList} onPostSelection={this.handleChangingSelectedPost} />;
+      buttonText = "Add Post";
+    }
+    
     return (
       <React.Fragment>
         {currentlyVisibleState}
@@ -65,3 +135,18 @@ class PostControl extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    masterPostList: state.masterPostList,
+    formVisibleOnPage: state.formVisibleOnPage
+  }
+}
+
+PostControl.propTypes = {
+  masterPostList: PropTypes.object
+}
+
+PostControl = connect(mapStateToProps)(PostControl);
+
+export default PostControl;

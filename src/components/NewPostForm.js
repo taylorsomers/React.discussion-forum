@@ -11,6 +11,7 @@ function NewPostForm(props){
       postTitle: event.target.postTitle.value,
       postBody: event.target.postBody.value,
       timeStamp: event.target.timeStamp.value,
+      postScore: 0,
       id: v4()
     });
   }

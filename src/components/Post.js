@@ -9,6 +9,8 @@ function Post(props) {
       <div onClick = {() => props.whenPostClicked(props.id)}>
         <h3>{props.postTitle} - {props.postBody}</h3>
         <p><em>{props.timeStamp}</em></p>
+
+        <p><em>{props.timeStamp}</em></p>
         <hr />
       </div>
     </React.Fragment>
