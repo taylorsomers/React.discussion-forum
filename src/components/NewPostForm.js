@@ -10,13 +10,18 @@ function NewPostForm(props){
     props.onNewPostCreation({
       postTitle: event.target.postTitle.value,
       postBody: event.target.postBody.value,
-      timeStamp: event.target.timeStamp.value,
+      timeStamp: Date(),
       postScore: 0,
       id: v4()
     });
   }
 
-  return (
+let [month, date, year]    = ( new Date() ).toLocaleDateString().split("/")
+console.log(month, date, year);
+
+let [hour, minute, second] = ( new Date() ).toLocaleTimeString().slice(0,7).split(":")
+console.log(hour, minute, second); 
+return (
     <React.Fragment>
       <form onSubmit={handleNewPostFormSubmission}>
         <input

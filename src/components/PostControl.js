@@ -123,19 +123,19 @@ class PostControl extends React.Component {
       currentlyVisibleState = <PostList postList={this.props.masterPostList} onPostSelection={this.handleChangingSelectedPost} />;
       buttonText = "Add Post";
     }
-    
+
     return (
       <React.Fragment>
         {currentlyVisibleState}
         <button onClick={this.handleClick}>{buttonText}</button>
       
-        <button onClick = {this.handleClick}>upvote: {this.state.count}</button>
+        
       
       </React.Fragment>
     );
   }
 }
-
+//<button onClick = {this.handleClick}>upvote: {this.state.count}</button>
 const mapStateToProps = state => {
   return {
     masterPostList: state.masterPostList,

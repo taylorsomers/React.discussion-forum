@@ -8,8 +8,8 @@ function PostList(props){
     {Object.values(props.postList).map((post) => {
       return <Post
         whenPostClicked = { props.onPostSelection }
-        title = {post.postTitle}
-        body = {post.postBody}
+        postTitle = {post.postTitle}
+        postBody = {post.postBody}
         timeStamp = {post.timeStamp}
         id = {post.id}
         key = {post.id}
