@@ -10,7 +10,9 @@ function Post(props) {
       
       <div onClick = {() => props.whenPostClicked(props.id)}>
         <h3>title: {props.postTitle} - body: {props.postBody}</h3>
-       <h3>timestamp: {props.timeStamp}</h3>
+        <h3>time: {props.timeStamp}</h3>
+        <h3>post-score: {props.postScore}</h3>
+        <h3>id: {props.id}</h3>
         <hr />
       </div>
     </React.Fragment>

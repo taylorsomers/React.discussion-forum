@@ -29,6 +29,13 @@ return (
           name="postTitle"
           placeholder="Post Title"
         />
+
+        {/* <input
+          type="text"
+          name="postScore"
+          placeholder="Post score"
+        /> */}
+        
         <textarea
           name="postBody"
           placeholder="Enter Text Here"

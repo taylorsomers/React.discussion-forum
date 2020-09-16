@@ -4,18 +4,21 @@ import PropTypes from "prop-types";
 function PostDetail(props){
   const { post } = props;
 
-return (
-<React.Fragment>
-  <h1>Post Detail</h1>
-  <h3>post: {post.postTitle}</h3>
-  <h3>post: {post.postBody}</h3>
-  <h3>post: {post.timeStamp}</h3>
-  <h3>post: {post.postScore}</h3>
+  return (
+    <React.Fragment>
+      <h1>Post Detail</h1>
+      <h3>title: {post.postTitle}</h3>
+      <h3>post: {post.postBody}</h3>
+      <h3>time: {post.timeStamp}</h3>
+      <h3>post-score: {post.postScore}</h3>
+      <h3>id: {post.id}</h3>
 
-  <button onClick={ props.onClickingIncrement }>upvote</button>
-  <button onClick={ props.onClickingDecrement }>downvote</button>
-  
-  </React.Fragment>
+      <button onClick={ props.onClickingIncrement }>upvote</button>
+      <button onClick={ props.onClickingDecrement }>downvote</button>
+
+      {/* Never forget. */}
+    
+    </React.Fragment>
   );
 }
 

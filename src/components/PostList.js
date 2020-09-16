@@ -11,6 +11,7 @@ function PostList(props){
         postTitle = {post.postTitle}
         postBody = {post.postBody}
         timeStamp = {post.timeStamp}
+        postScore = {post.postScore}
         id = {post.id}
         key = {post.id}
       />

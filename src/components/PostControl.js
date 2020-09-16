@@ -32,13 +32,14 @@ class PostControl extends React.Component {
 
   handleAddingNewPostToList = (newPost) => {
     const { dispatch } = this.props;
-    const { id, postTitle, postBody, timeStamp } = newPost;
+    const { id, postTitle, postBody, timeStamp, postScore } = newPost;
     const action = {
       type: 'ADD_POST',
       id: id,
       postTitle: postTitle,
       postBody: postBody,
-      timeStamp: timeStamp
+      timeStamp: timeStamp,
+      postScore: postScore
     }
     dispatch(action);
     const action2 = {
@@ -64,7 +65,7 @@ class PostControl extends React.Component {
     const { dispatch } = this.props;
     const { id, postTitle, postBody, timeStamp, postScore } = postToIncrement;
     const action = {
-      type: 'ADD_POST',
+      type: "ADD_POST",
       id: id,
       postTitle: postTitle,
       postBody: postBody,
@@ -82,7 +83,7 @@ class PostControl extends React.Component {
     const { dispatch } = this.props;
     const { id, postTitle, postBody, timeStamp, postScore } = postToDecrement;
     const action = {
-      type: 'ADD_POST',
+      type: "ADD_POST",
       id: id,
       postTitle: postTitle,
       postBody: postBody,
@@ -106,15 +107,19 @@ class PostControl extends React.Component {
     let buttonText = null;
 
     if (this.state.editing) {
-      currentlyVisibleState = <NewPostForm post = {this.state.selectedPost} onEditPost = {this.handleEditingPostInList} />
+      currentlyVisibleState = <NewPostForm
+        post = {this.state.selectedPost}
+        onEditPost = {this.handleEditingPostInList}
+      />
       buttonText = "Return to Post List";
 
     } else if (this.state.selectedPost != null) {
-      currentlyVisibleState = 
-      <PostDetail 
-        post = {this.state.selectedPost} 
-        onClickingDelete = {this.handleDeletingPost} 
-        onClickingEdit = {this.handleEditClick} />
+      currentlyVisibleState = <PostDetail
+        post = {this.state.selectedPost}
+        onClickingIncrement = {this.handleIncrementingPostScore}
+        onClickingDecrement = {this.handleDecrementingPostScore}
+        onClickingEdit = {this.handleEditClick} //new
+      />
       buttonText = "Return to Post List";
     } else if (this.props.formVisibleOnPage) {
       currentlyVisibleState = <NewPostForm onNewPostCreation={this.handleAddingNewPostToList}  />;
