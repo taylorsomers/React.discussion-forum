@@ -74,7 +74,6 @@ class PostControl extends React.Component {
     }
     dispatch(action);
     this.setState({
-      editing: false,
       selectedPost: null
     });
   }
@@ -92,7 +91,7 @@ class PostControl extends React.Component {
     }
     dispatch(action);
     this.setState({
-      editing: false,
+      //editing: false,
       selectedPost: null
     });
   }
@@ -106,19 +105,18 @@ class PostControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
 
-    if (this.state.editing) {
-      currentlyVisibleState = <NewPostForm
-        post = {this.state.selectedPost}
-        onEditPost = {this.handleEditingPostInList}
-      />
-      buttonText = "Return to Post List";
+    // if (this.state.editing) {
+    //   currentlyVisibleState = <NewPostForm
+    //     post = {this.state.selectedPost}
+    //     onEditPost = {this.handleEditingPostInList}
+    //   />
+    //   buttonText = "Return to Post List";
 
-    } else if (this.state.selectedPost != null) {
+    if (this.state.selectedPost != null) {
       currentlyVisibleState = <PostDetail
         post = {this.state.selectedPost}
         onClickingIncrement = {this.handleIncrementingPostScore}
         onClickingDecrement = {this.handleDecrementingPostScore}
-        onClickingEdit = {this.handleEditClick} //new
       />
       buttonText = "Return to Post List";
     } else if (this.props.formVisibleOnPage) {
