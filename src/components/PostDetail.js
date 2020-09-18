@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function PostDetail(props){
+function PostDetail(props) {
   const { post } = props;
 
   return (
@@ -13,23 +13,23 @@ function PostDetail(props){
       <h3>post-score: {post.postScore}</h3>
       <h3>id: {post.id}</h3>
 
-      <button onClick={ () => props.onClickingIncrement({
+      <button onClick={() => props.onClickingIncrement({
         postTitle: post.postTitle,
         postBody: post.postBody,
         timeStamp: post.timeStamp,
         postScore: post.postScore,
         id: post.id
-      }) }>upvote</button>
-      <button onClick={ () => props.onClickingDecrement({
+      })}>upvote</button>
+      <button onClick={() => props.onClickingDecrement({
         postTitle: post.postTitle,
         postBody: post.postBody,
         timeStamp: post.timeStamp,
         postScore: post.postScore,
         id: post.id
-      }) }>downvote</button>
+      })}>downvote</button>
 
       {/* Never forget. */}
-    
+
     </React.Fragment>
   );
 }

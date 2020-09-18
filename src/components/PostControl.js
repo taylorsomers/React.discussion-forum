@@ -60,7 +60,7 @@ class PostControl extends React.Component {
       editing: true
     });
   }
-  
+
   handleIncrementingPostScore = (postToIncrement) => {
     const { dispatch } = this.props;
     const { id, postTitle, postBody, timeStamp, postScore } = postToIncrement;
@@ -74,7 +74,8 @@ class PostControl extends React.Component {
     }
     dispatch(action);
     this.setState({
-      selectedPost: null
+      // selectedPost: null
+      selectedPost: postToIncrement
     });
   }
 
@@ -92,7 +93,8 @@ class PostControl extends React.Component {
     dispatch(action);
     this.setState({
       //editing: false,
-      selectedPost: null
+      // selectedPost: null
+      selectedPost: postToDecrement
     });
   }
 
@@ -114,13 +116,13 @@ class PostControl extends React.Component {
 
     if (this.state.selectedPost != null) {
       currentlyVisibleState = <PostDetail
-        post = {this.state.selectedPost}
-        onClickingIncrement = {this.handleIncrementingPostScore}
-        onClickingDecrement = {this.handleDecrementingPostScore}
+        post={this.state.selectedPost}
+        onClickingIncrement={this.handleIncrementingPostScore}
+        onClickingDecrement={this.handleDecrementingPostScore}
       />
       buttonText = "Return to Post List";
     } else if (this.props.formVisibleOnPage) {
-      currentlyVisibleState = <NewPostForm onNewPostCreation={this.handleAddingNewPostToList}  />;
+      currentlyVisibleState = <NewPostForm onNewPostCreation={this.handleAddingNewPostToList} />;
       buttonText = "Return to Post List";
     } else {
       currentlyVisibleState = <PostList postList={this.props.masterPostList} onPostSelection={this.handleChangingSelectedPost} />;
@@ -131,9 +133,9 @@ class PostControl extends React.Component {
       <React.Fragment>
         {currentlyVisibleState}
         <button onClick={this.handleClick}>{buttonText}</button>
-      
-        
-      
+
+
+
       </React.Fragment>
     );
   }
